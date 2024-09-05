@@ -13,12 +13,12 @@ const booksModel = mongoose.model('Book', bookSchema);
 const reviewModel = mongoose.model('Review', reviewSchema);
 
 export default class BookRepository {
+    
     async createBook(bookData) {
         const book = new booksModel(bookData);
         const savedBook = await book.save();
         return savedBook;
     }
-
     
     async getOne(id) {
         const book = await booksModel.findById(id);
