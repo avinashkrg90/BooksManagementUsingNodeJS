@@ -55,5 +55,12 @@ export default class BookRepository {
     // Complete the function below
     
     // adding review to a particular book
-    async addReviewToBook(bookId, text, rating) { }
+    async addReviewToBook(bookId, text, rating){ 
+        const review = new reviewModel({text, rating, bookId});
+        const savedReview = await review.save();
+
+        await booksModel.updateOne({_id: bookId}, {$push:{reviews: savedReview._id}})
+        return savedReview;
+    }
+
 }

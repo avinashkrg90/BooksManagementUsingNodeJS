@@ -37,10 +37,8 @@ export default class BookController {
         res.status(404).send("book  not found.");
       } else {
         const review = await this.bookRepository.addReviewToBook(bookId, text, rating);
-        res.status(200).json(review);
+        res.status(201).json(review);
       }
-
-
     } catch (err) {
       console.log(err);
       res.status(500).json({ error: "Falied to add review" });

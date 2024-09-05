@@ -4,5 +4,20 @@
 import mongoose from "mongoose";
 
 export const reviewSchema = new mongoose.Schema({
-  // Write your code here
+    // Write your code here 
+    text:{
+        type:String,
+        required:true
+    },
+    rating:{
+        type:Number,
+        required:true,
+        min:1,
+        max:5
+    },
+    book:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Book'
+    }
 });
+

@@ -28,6 +28,10 @@ export const bookSchema = new mongoose.Schema({
         min: 0,
     },
     // Modify this section to handle the association with reviews.
-    reviews: {}
-
+    reviews:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Review'
+        }
+    ]
 });
